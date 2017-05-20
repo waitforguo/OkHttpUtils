@@ -16,6 +16,9 @@ public class HttpRequestParams {
      */
     public static final String SEND_CODE = "sendCode";
 
+    /**
+     * 证书
+     */
     public static String CER_ROAMTECH = "-----BEGIN CERTIFICATE-----\n" +
             "MIIERjCCAy6gAwIBAgIJAPmD7Uh5ID/bMA0GCSqGSIb3DQEBCwUAMIG3MQswCQYD\n" +
             "-----END CERTIFICATE-----";
