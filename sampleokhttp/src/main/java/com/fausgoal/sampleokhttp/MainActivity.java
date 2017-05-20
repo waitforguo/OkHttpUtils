@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fausgoal.okhttp.callback.HttpHandler;
+import com.fausgoal.okhttp.HttpHandler;
 import com.fausgoal.sampleokhttp.result.JsonResult;
 import com.fausgoal.sampleokhttp.http.HttpManager;
 import com.fausgoal.sampleokhttp.http.HttpRequestFiled;
@@ -17,8 +17,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-//    https://github.com/hongyangAndroid/okhttputils
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

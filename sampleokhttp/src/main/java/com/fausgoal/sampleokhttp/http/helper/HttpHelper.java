@@ -1,6 +1,6 @@
 package com.fausgoal.sampleokhttp.http.helper;
 
-import com.fausgoal.okhttp.callback.HttpHandler;
+import com.fausgoal.okhttp.HttpHandler;
 import com.fausgoal.sampleokhttp.http.HttpResponseCode;
 import com.fausgoal.sampleokhttp.result.JsonResult;
 

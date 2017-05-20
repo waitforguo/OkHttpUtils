@@ -2,9 +2,6 @@ package com.fausgoal.okhttp.builder;
 
 import com.fausgoal.okhttp.request.PostJsonRequest;
 import com.fausgoal.okhttp.request.RequestCall;
-import com.fausgoal.okhttp.uitls.JsonUtils;
-
-import java.util.Map;
 
 import okhttp3.MediaType;
 
@@ -17,8 +14,8 @@ public class PostJsonBuilder extends OkHttpRequestBuilder<PostJsonBuilder> {
     private String mContent;
     private MediaType mMediaType;
 
-    public PostJsonBuilder content(Map<String, Object> params) {
-        this.mContent = JsonUtils.getModeltoJson(params);
+    public PostJsonBuilder content(String jsonContent) {
+        this.mContent = jsonContent;
         return this;
     }
 

@@ -1,4 +1,4 @@
-package com.fausgoal.okhttp.uitls;
+package com.fausgoal.sampleokhttp.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,14 +9,16 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 
-
 /**
  * Description：json相互转换的类
- * <br/><br/>Created by Fausgoal on 2015/5/17.
+ * <br/><br/>Created by Fausgoal on 5/20/17.
  * <br/><br/>
  */
 public class JsonUtils {
-    private static final String TAG = "GLJsonToObject";
+    private static final String TAG = "JsonUtils";
+
+    private JsonUtils() {
+    }
 
     public static <T> T getJsonToModel(JSONObject resonse, TypeToken<T> tTypeToken) {
         return getJsonToModel(resonse.toString(), tTypeToken);
@@ -78,4 +80,5 @@ public class JsonUtils {
         }
         return null;
     }
+
 }

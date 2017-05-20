@@ -5,6 +5,7 @@ import com.fausgoal.okhttp.callback.Callback;
 import com.fausgoal.okhttp.common.MediaTypeConst;
 import com.fausgoal.sampleokhttp.BuildConfig;
 import com.fausgoal.sampleokhttp.utils.DeviceUtils;
+import com.fausgoal.sampleokhttp.utils.JsonUtils;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -44,7 +45,7 @@ public class HttpFunctionImpl implements IHttpFunction {
                 .url(url)
                 .mediaType(MediaTypeConst.MEDIA_TYPE_JSON) // json格式
                 .headers(getHeaderParams()) // 默认header参数
-                .content(params) // 请求参数
+                .content(JsonUtils.getModeltoJson(params)) // 请求参数
                 .build()
                 .execute(callback);
     }

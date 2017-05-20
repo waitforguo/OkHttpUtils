@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'// 添加
+// bintray 添加
+apply plugin: 'com.novoda.bintray-release'
+// jitpack插件
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 25
@@ -10,10 +13,8 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,7 +36,7 @@ task makeJar(type: Copy) {
     from('build/intermediates/bundles/release/')
     into('build/outputs/')
     include('classes.jar')
-    rename ('classes.jar', 'OkHttpUtils-1_0_0.jar')
+    rename('classes.jar', 'OkHttpUtils-1_0_0.jar')
 }
 
 makeJar.dependsOn(clearJar, build)
@@ -43,16 +44,14 @@ makeJar.dependsOn(clearJar, build)
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
-    compile 'com.google.code.gson:gson:2.8.0'
 }
 
 // 添加
 publish {
-    userOrg = 'waitforguo' // bintray.com用户名
-    groupId = 'com.fausgoal' // jcenter上的路径
-    artifactId = 'OkHttpUtils' // 项目名称
-    publishVersion = '1.0.0' // 版本号
-    desc = 'This is a okHttp utils for a project' // 描述，不重要
-    // 网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    userOrg = 'fausgoal'                //bintray注册的Organizations的名称
+    groupId = 'com.fausgoal'            //compile引用时的第1部分groupId
+    artifactId = 'OkHttpUtils'          //compile引用时的第2部分项目名
+    publishVersion = '1.0.0'            //compile引用时的第3部分版本号
+    desc = 'This is a okhttp extend library'
     website = 'https://github.com/waitforguo/OkHttpUtils'
 }

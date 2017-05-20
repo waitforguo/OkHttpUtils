@@ -1,4 +1,4 @@
-package com.fausgoal.okhttp.callback;
+package com.fausgoal.okhttp;
 
 import android.content.Context;
 import android.widget.Toast;

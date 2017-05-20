@@ -1,10 +1,10 @@
 package com.fausgoal.sampleokhttp.http.callback;
 
+import com.fausgoal.okhttp.HttpHandler;
 import com.fausgoal.okhttp.callback.Callback;
-import com.fausgoal.okhttp.callback.HttpHandler;
-import com.fausgoal.okhttp.uitls.JsonUtils;
-import com.fausgoal.sampleokhttp.result.JsonResult;
 import com.fausgoal.sampleokhttp.http.helper.HttpHelper;
+import com.fausgoal.sampleokhttp.result.JsonResult;
+import com.fausgoal.sampleokhttp.utils.JsonUtils;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.List;

@@ -8,12 +8,14 @@ import com.fausgoal.okhttp.builder.PostFormBuilder;
 import com.fausgoal.okhttp.builder.PostJsonBuilder;
 import com.fausgoal.okhttp.builder.PostStringBuilder;
 import com.fausgoal.okhttp.callback.Callback;
+import com.fausgoal.okhttp.log.LoggerInterceptor;
 import com.fausgoal.okhttp.request.RequestCall;
 import com.fausgoal.okhttp.uitls.Exceptions;
 import com.fausgoal.okhttp.uitls.Platform;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -26,7 +28,7 @@ import okhttp3.ResponseBody;
  * <br/><br/>
  */
 public class OkHttpUtils {
-    private static final String TAG = "OkHttpUtils";
+    public static final String TAG = "Fausgoal[OkHttpUtils]";
 
     public static final long DEFAULT_MILLISECONDS = 10_000L;
 
@@ -82,10 +84,18 @@ public class OkHttpUtils {
     private OkHttpUtils(OkHttpClient okHttpClient) {
         mPlatform = Platform.get();
         if (null == okHttpClient) {
-            mHttpClient = OkHttpUtilsInitialize.getDefaultHttpClient();
+            mHttpClient = getDefaultHttpClient();
         } else {
             mHttpClient = okHttpClient;
         }
+    }
+
+    private OkHttpClient getDefaultHttpClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(OkHttpUtils.TIME_OUT, TimeUnit.MILLISECONDS)
+                .readTimeout(OkHttpUtils.TIME_OUT, TimeUnit.MILLISECONDS)
+                .addInterceptor(new LoggerInterceptor(TAG));
+        return builder.build();
     }
 
     public OkHttpClient getOkHttpClient() {
