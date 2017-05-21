@@ -29,14 +29,14 @@ android {
 }
 
 task clearJar(type: Delete) {
-    delete 'build/outputs/okhttputils.jar'
+    delete 'build/outputs/GLOkHttpUtils-1_0_2.jar'
 }
 
 task makeJar(type: Copy) {
-    from('build/intermediates/bundles/release/')
+    from('build/intermediates/bundles/default/')
     into('build/outputs/')
     include('classes.jar')
-    rename('classes.jar', 'OkHttpUtils-1_0_0.jar')
+    rename('classes.jar', 'GLOkHttpUtils-1_0_2.jar')
 }
 
 makeJar.dependsOn(clearJar, build)
@@ -48,10 +48,10 @@ dependencies {
 
 // 添加
 publish {
-    userOrg = 'fausgoal'                //bintray注册的Organizations的名称
-    groupId = 'com.fausgoal'            //compile引用时的第1部分groupId
-    artifactId = 'OkHttpUtils'          //compile引用时的第2部分项目名
-    publishVersion = '1.0.0'            //compile引用时的第3部分版本号
+    userOrg = 'fausgoal'                    // bintray注册的Organizations的名称
+    groupId = 'com.fausgoal'                // compile引用时的第1部分groupId
+    artifactId = 'GLOkHttpUtils'            // compile引用时的第2部分项目名
+    publishVersion = '1.0.2'                // compile引用时的第3部分版本号
     desc = 'This is a okhttp extend library'
     website = 'https://github.com/waitforguo/OkHttpUtils'
 }
