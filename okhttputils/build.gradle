@@ -4,7 +4,7 @@ apply plugin: 'com.novoda.bintray-release'
 // jitpack插件
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.waitforguo' // 替换成你的Github的用户名
+group = 'com.github.waitforguo' // 替换成你的Github的用户名
 
 android {
     compileSdkVersion 25
@@ -30,6 +30,11 @@ android {
     }
 }
 
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+}
+
 task clearJar(type: Delete) {
     delete 'build/outputs/GLOkHttpUtils-1_0_2.jar'
 }
@@ -43,9 +48,28 @@ task makeJar(type: Copy) {
 
 makeJar.dependsOn(clearJar, build)
 
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+// build a jar with source files
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// build a jar with javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
 
 // 添加
