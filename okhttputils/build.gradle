@@ -4,6 +4,8 @@ apply plugin: 'com.novoda.bintray-release'
 // jitpack插件
 apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.github.waitforguo' // 替换成你的Github的用户名
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
